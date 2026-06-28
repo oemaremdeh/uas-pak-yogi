@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartLomba – Registrasi Peserta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body class="reg-body">
+
+  <div class="reg-wrapper">
+    <!-- Header -->
+    <div class="reg-header">
+      <div class="reg-header-content">
+        <div class="reg-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+            <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+          </svg>
+          SmartLomba
+        </div>
+        <h2 class="reg-title">Registrasi Peserta</h2>
+        <p class="reg-subtitle">Daftar dan ikuti kompetisi akademik bersama kami!</p>
+      </div>
+
+      <!-- Decorative dots -->
+      <span class="reg-dot reg-dot1"></span>
+      <span class="reg-dot reg-dot2"></span>
+      <span class="reg-dot reg-dot3"></span>
+    </div>
+
+    <!-- Step Indicator -->
+    <div class="step-indicator">
+      <div class="step active" id="step-ind-1">
+        <div class="step-circle">1</div>
+        <span class="step-label">Data Diri</span>
+      </div>
+      <div class="step-line" id="line-1"></div>
+      <div class="step" id="step-ind-2">
+        <div class="step-circle">2</div>
+        <span class="step-label">Pilih Lomba</span>
+      </div>
+      <div class="step-line" id="line-2"></div>
+      <div class="step" id="step-ind-3">
+        <div class="step-circle">3</div>
+        <span class="step-label">Konfirmasi</span>
+      </div>
+    </div>
+
+    <!-- Form Container -->
+    <div class="reg-card">
+
+      <!-- STEP 1: Data Diri -->
+      <div class="reg-step" id="regStep1">
+        <div class="step-heading">
+          <div class="step-icon-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div>
+            <h3>Identitas Siswa</h3>
+            <p>Pastikan data yang dimasukkan sesuai dengan rapor/kartu pelajar</p>
+          </div>
+        </div>
+
+        <form id="formStep1" onsubmit="nextStep(event, 1)">
+          <div class="form-group">
+            <label class="form-label">Nama Lengkap</label>
+            <input type="text" id="namaLengkap" class="form-input" placeholder="Nama Lengkap" required />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">NISN (10 Digit)</label>
+              <input type="text" id="nisn" class="form-input" placeholder="NISN (10 Digit)" maxlength="10" pattern="\d{10}" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Asal Sekolah</label>
+              <input type="text" id="asalSekolah" class="form-input" placeholder="Asal Sekolah" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Jenjang</label>
+              <select id="jenjang" class="form-select" required>
+                <option value="">Pilih Jenjang</option>
+                <option>SD</option>
+                <option>SMP</option>
+                <option>SMA/SMK</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Kelas</label>
+              <select id="kelas" class="form-select" required>
+                <option value="">Pilih Kelas</option>
+                <option>X MIPA 1</option>
+                <option>X MIPA 2</option>
+                <option>XI MIPA 1</option>
+                <option>XI MIPA 2</option>
+                <option>XI IPS 1</option>
+                <option>XII MIPA 1</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Alamat Email</label>
+              <input type="email" id="emailPeserta" class="form-input" placeholder="Alamat Email" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">No. HP Orang Tua</label>
+              <input type="tel" id="noHpOrtu" class="form-input" placeholder="No. HP Orang Tua" required />
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">Lanjut Pilih Lomba &rarr;</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- STEP 2: Pilih Lomba -->
+      <div class="reg-step" id="regStep2" style="display:none;">
+        <div class="step-heading">
+          <div class="step-icon-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+          </div>
+          <div>
+            <h3>Pilih Lomba</h3>
+            <p>Pilih salah satu lomba yang ingin Anda ikuti</p>
+          </div>
+        </div>
+
+        <div class="lomba-grid">
+          <label class="lomba-card" id="lomba-mat">
+            <input type="radio" name="lomba" value="Olimpiade Matematika" onchange="selectLomba(this)" />
+            <div class="lomba-icon lomba-blue">∑</div>
+            <div class="lomba-info">
+              <strong>Olimpiade Matematika</strong>
+              <span>Tingkat Nasional • 14 Okt 2025</span>
+            </div>
+            <div class="lomba-check">✓</div>
+          </label>
+          <label class="lomba-card" id="lomba-ipa">
+            <input type="radio" name="lomba" value="Olimpiade IPA" onchange="selectLomba(this)" />
+            <div class="lomba-icon lomba-green">⚗</div>
+            <div class="lomba-info">
+              <strong>Olimpiade IPA</strong>
+              <span>Tingkat Nasional • 15 Okt 2025</span>
+            </div>
+            <div class="lomba-check">✓</div>
+          </label>
+          <label class="lomba-card" id="lomba-ind">
+            <input type="radio" name="lomba" value="Lomba B. Indonesia" onchange="selectLomba(this)" />
+            <div class="lomba-icon lomba-orange">Ꞵ</div>
+            <div class="lomba-info">
+              <strong>Lomba B. Indonesia</strong>
+              <span>Tingkat Nasional • 16 Okt 2025</span>
+            </div>
+            <div class="lomba-check">✓</div>
+          </label>
+          <label class="lomba-card" id="lomba-ing">
+            <input type="radio" name="lomba" value="Lomba B. Inggris" onchange="selectLomba(this)" />
+            <div class="lomba-icon lomba-purple">E</div>
+            <div class="lomba-info">
+              <strong>Lomba B. Inggris</strong>
+              <span>Tingkat Nasional • 17 Okt 2025</span>
+            </div>
+            <div class="lomba-check">✓</div>
+          </label>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn-outline" onclick="prevStep(2)">&#8592; Kembali</button>
+          <button type="button" class="btn-primary" onclick="goToStep3()">Konfirmasi Data &rarr;</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Konfirmasi -->
+      <div class="reg-step" id="regStep3" style="display:none;">
+        <div class="step-heading">
+          <div class="step-icon-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <h3>Konfirmasi Pendaftaran</h3>
+            <p>Periksa kembali data sebelum mengirimkan pendaftaran</p>
+          </div>
+        </div>
+
+        <div class="confirm-box" id="confirmData">
+          <!-- JS populated -->
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn-outline" onclick="prevStep(3)">&#8592; Ubah Data</button>
+          <button type="button" class="btn-primary btn-success" onclick="submitRegistration()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Kirim Pendaftaran
+          </button>
+        </div>
+      </div>
+
+      <!-- SUCCESS State -->
+      <div class="reg-step" id="regSuccess" style="display:none;">
+        <div class="success-state">
+          <div class="success-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3>Pendaftaran Berhasil!</h3>
+          <p>Data Anda telah dikirim. Pantau status pendaftaran di dashboard peserta.</p>
+          <a href="peserta-dashboard.html" class="btn-primary" style="margin-top:1.5rem; display:inline-block;">Lihat Dashboard Saya &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+
+    <footer class="reg-footer">
+      <p>© 2025 SmartLomba • Official Portal Akademik</p>
+    </footer>
+  </div>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

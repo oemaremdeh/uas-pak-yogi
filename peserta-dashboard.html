@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartLomba – Dashboard Peserta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body class="peserta-body">
+
+  <!-- Top Navigation -->
+  <nav class="peserta-nav">
+    <div class="peserta-nav-left">
+      <div class="nav-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+          <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+        </svg>
+        SmartLomba
+      </div>
+      <div class="nav-links">
+        <a href="peserta-dashboard.html" class="nav-link active">Dashboard</a>
+        <a href="lomba-saya.html" class="nav-link">Lomba Saya</a>
+      </div>
+    </div>
+    <div class="peserta-nav-right">
+      <button class="icon-btn" onclick="toggleMobileMenu()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <button class="icon-btn" title="Notifikasi">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span class="notif-badge">2</span>
+      </button>
+      <div class="user-chip-sm">
+        <div class="avatar avatar-sm" id="pdNavAvatar">P</div>
+        <span id="pdNavName">Peserta</span>
+        <a href="#" class="logout-link" title="Keluar" onclick="handleLogout(event)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="peserta-layout">
+    <!-- Left Sidebar -->
+    <aside class="peserta-sidebar">
+      <div class="sidebar-section-title">Profil Peserta</div>
+      <div class="user-info-card">
+        <div class="avatar" id="pdSideAvatar">P</div>
+        <div>
+          <p class="user-full-name" id="pdSideName">Peserta</p>
+          <p class="user-school" id="pdSideSchool">-</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Dashboard Area -->
+    <div class="peserta-main">
+
+      <!-- Welcome Banner -->
+      <div class="welcome-banner">
+        <div class="welcome-text">
+          <h2>Selamat datang, Budi Santoso! 👋</h2>
+          <p>Qufa teniretur afo afo do okri. Uki enggi tenser.</p>
+          <button class="btn-outline-white">Eksplorasi lomba lainnya</button>
+        </div>
+        <div class="welcome-trophy">
+          <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5">
+            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+            <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+            <path d="M4 22h16"/>
+            <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+            <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+            <path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Status Cards -->
+      <div class="peserta-stat-grid">
+        <div class="peserta-stat-card">
+          <div class="pstat-icon pstat-green">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <p class="pstat-label">Lagi di Ikuti</p>
+            <p class="pstat-value">2</p>
+          </div>
+        </div>
+        <div class="peserta-stat-card">
+          <div class="pstat-icon pstat-blue">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <p class="pstat-label">Status Pendaftaran</p>
+            <p class="pstat-value" style="font-size:1rem; color:var(--green);">Terverifikasi</p>
+          </div>
+        </div>
+        <div class="peserta-stat-card">
+          <div class="pstat-icon pstat-purple">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div>
+            <p class="pstat-label">Hasil/Nilai</p>
+            <p class="pstat-value">Belum Ada</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lomba Saya -->
+      <div class="section-header">
+        <h3>Lomba Saya</h3>
+        <a href="lomba-saya.html" class="link-all">Lihat Semua &rarr;</a>
+      </div>
+      <div class="lomba-cards-grid" id="lombaCardsGrid">
+        <!-- Populated by JS -->
+      </div>
+
+      <!-- Data Pendaftaran -->
+      <div class="section-header" style="margin-top:2rem;">
+        <h3>Data Pendaftaran Saya</h3>
+        <button class="btn-edit-sm" onclick="toggleEditProfile()">Edit Profil</button>
+      </div>
+      <div class="data-card">
+        <div class="data-grid">
+          <div class="data-field">
+            <span class="data-label">NAMA LENGKAP</span>
+            <span class="data-value" id="dataName">Budi Santoso</span>
+          </div>
+          <div class="data-field">
+            <span class="data-label">KELAS</span>
+            <span class="data-value" id="dataKelas">XI MIPA 2</span>
+          </div>
+          <div class="data-field">
+            <span class="data-label">ASAL SEKOLAH</span>
+            <span class="data-value" id="dataSekolah">SMA Negeri 1 Jakarta</span>
+          </div>
+          <div class="data-field">
+            <span class="data-label">NISN</span>
+            <span class="data-value" id="dataNisn">0045612378</span>
+          </div>
+        </div>
+        <button class="btn-edit-profile" onclick="toggleEditProfile()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          Edit Profil
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAB -->
+  <button class="fab" title="Daftar Lomba Baru" onclick="window.location.href='registrasi.html'">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+  </button>
+
+  <!-- Edit Profile Modal -->
+  <div class="modal-overlay" id="editProfileModal" style="display:none;">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Edit Profil</h3>
+        <button onclick="closeModal('editProfileModal')">&#x2715;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Nama Lengkap</label>
+          <input type="text" class="form-input" id="editName" value="Budi Santoso" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Asal Sekolah</label>
+          <input type="text" class="form-input" id="editSekolah" value="SMA Negeri 1 Jakarta" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Kelas</label>
+          <input type="text" class="form-input" id="editKelas" value="XI MIPA 2" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">NISN</label>
+          <input type="text" class="form-input" id="editNisn" value="0045612378" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-cancel" onclick="closeModal('editProfileModal')">Batal</button>
+        <button class="btn-primary" onclick="saveProfile()">Simpan</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

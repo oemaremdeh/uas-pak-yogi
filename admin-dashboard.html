@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartLomba – Dashboard Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body class="app-body">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+          <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+        </svg>
+        <span>SmartLomba</span>
+      </div>
+      <p class="sidebar-role">Institutional Portal</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="admin-dashboard.html" class="nav-item active">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </a>
+      <a href="admin-peserta.html" class="nav-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Pendaftaran Peserta
+      </a>
+      <a href="#" class="nav-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Leaderboard
+      </a>
+      <a href="#" class="nav-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+        Pengaturan
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="#" class="nav-item nav-logout" onclick="handleLogout(event)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Keluar
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Top bar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="sidebar-toggle" onclick="toggleSidebar()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <h1 class="page-title">Dashboard Ringkasan</h1>
+      </div>
+      <div class="topbar-right">
+        <button class="btn-primary" onclick="openTambahLombaModal()" style="font-size:13px; padding:8px 16px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Tambah Lomba
+        </button>
+        <button class="icon-btn" title="Notifikasi">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="notif-badge">3</span>
+        </button>
+        <div class="user-chip">
+          <div class="avatar">A</div>
+          <div class="user-info">
+            <span class="user-name">Admin Utama</span>
+            <span class="user-role">Administrator</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <!-- Stat Cards -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon stat-blue">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-label">Total Peserta</span>
+            <span class="stat-value" data-target="248">0</span>
+            <span class="stat-badge badge-green">+10%</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon stat-orange">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-label">Lomba Aktif</span>
+            <span class="stat-value" data-target="3">0</span>
+            <span class="stat-badge badge-green">Enable</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon stat-green">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-label">Soal Tersedia</span>
+            <span class="badge-dev">Dalam Pembangunan</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon stat-purple">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-label">Penilaian Selesai</span>
+            <span class="badge-dev">Dalam Pembangunan</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Two Column Layout -->
+      <div class="dashboard-grid">
+        <!-- Chart Section -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Pendaftaran per Lomba</h3>
+            <a href="admin-peserta.html" class="link-all">Detail &rarr;</a>
+          </div>
+          <div class="bar-chart">
+            <div class="bar-item">
+              <div class="bar-label">Matematika</div>
+              <div class="bar-track">
+                <div class="bar-fill bar-blue" data-width="85%"></div>
+              </div>
+              <div class="bar-value">85</div>
+            </div>
+            <div class="bar-item">
+              <div class="bar-label">IPA</div>
+              <div class="bar-track">
+                <div class="bar-fill bar-orange" data-width="62%"></div>
+              </div>
+              <div class="bar-value">62</div>
+            </div>
+            <div class="bar-item">
+              <div class="bar-label">Indonesia</div>
+              <div class="bar-track">
+                <div class="bar-fill bar-green" data-width="54%"></div>
+              </div>
+              <div class="bar-value">54</div>
+            </div>
+            <div class="bar-item">
+              <div class="bar-label">Inggris</div>
+              <div class="bar-track">
+                <div class="bar-fill bar-purple" data-width="47%"></div>
+              </div>
+              <div class="bar-value">47</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Announcements & Cert -->
+        <div class="card-stack">
+          <!-- Sertifikat -->
+          <div class="card card-cert">
+            <div class="cert-content">
+              <div>
+                <p class="cert-label">Sertifikat Siap</p>
+                <p class="cert-sub">Pengumuman pemenang Olimpiade Matematika akan dipublikasikan pada 26 Oktober 2025.</p>
+                <button class="btn-cert">Unduh Sertifikat &rarr;</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pengumuman -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Pengumuman Terjadwal</h3>
+            </div>
+            <div class="announcement-list">
+              <div class="announcement-item">
+                <div class="ann-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div>
+                  <p class="ann-text">Hasil penilaian Olimpiade Matematika akan dipublikasikan pada 26 Oktober 2025.</p>
+                  <span class="ann-meta">Besok, 26 Oktober</span>
+                </div>
+              </div>
+              <div class="announcement-item">
+                <div class="ann-icon ann-icon-green">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                </div>
+                <div>
+                  <p class="ann-text">Riwayat Sidang Seleksi</p>
+                  <span class="ann-meta">Review Sidang Seleksi</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Registrations -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Registrasi Terbaru</h3>
+          <div class="card-actions">
+            <button class="btn-filter">Filter</button>
+            <a href="admin-peserta.html" class="btn-primary-sm">Lihat Semua</a>
+          </div>
+        </div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>NO</th>
+                <th>NAMA PESERTA</th>
+                <th>ASAL SEKOLAH</th>
+                <th>LOMBA DIIKUTI</th>
+                <th>STATUS</th>
+                <th>AKSI</th>
+              </tr>
+            </thead>
+            <tbody id="dashboardTableBody">
+              <!-- populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Tambah Lomba -->
+  <div class="modal-overlay" id="tambahLombaModal" style="display:none;">
+    <div class="modal-box modal-box-wide">
+      <div class="modal-header">
+        <h3>Tambah Lomba Baru</h3>
+        <button onclick="closeModal('tambahLombaModal')">&#x2715;</button>
+      </div>
+      <div class="modal-body">
+        <form id="formTambahLomba" onsubmit="handleTambahLomba(event)">
+          <div class="form-group">
+            <label class="form-label">Nama Lomba</label>
+            <input type="text" id="tlNama" class="form-input" placeholder="Olimpiade Matematika" required />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Kode Lomba</label>
+              <input type="text" id="tlKode" class="form-input" placeholder="OLM-MAT-2025" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tanggal Pelaksanaan</label>
+              <input type="date" id="tlTanggal" class="form-input" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Maksimal Peserta</label>
+              <input type="number" id="tlMaks" class="form-input" placeholder="100" min="1" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Pelaksana</label>
+              <input type="text" id="tlPelaksana" class="form-input" placeholder="Kementerian Pendidikan" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Deskripsi (opsional)</label>
+            <textarea id="tlDeskripsi" class="form-input" rows="3" placeholder="Deskripsi singkat lomba..."></textarea>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn-cancel" onclick="closeModal('tambahLombaModal')">Batal</button>
+            <button type="submit" class="btn-primary">Simpan Lomba</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartLomba – Lomba Saya</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body class="peserta-body">
+
+  <!-- Top Navigation -->
+  <nav class="peserta-nav">
+    <div class="peserta-nav-left">
+      <div class="nav-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+          <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+        </svg>
+        SmartLomba
+      </div>
+      <div class="nav-links">
+        <a href="peserta-dashboard.html" class="nav-link">Dashboard</a>
+        <a href="lomba-saya.html" class="nav-link active">Lomba Saya</a>
+      </div>
+    </div>
+    <div class="peserta-nav-right">
+      <button class="icon-btn" title="Notifikasi">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+      </button>
+      <div class="user-chip-sm">
+        <div class="avatar avatar-sm" id="lsNavAvatar">P</div>
+        <span id="lsNavName">Peserta</span>
+        <a href="#" class="logout-link" title="Keluar" onclick="handleLogout(event)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="lomba-saya-container">
+    <div class="lomba-saya-header">
+      <h2>Lomba Saya</h2>
+      <p>Daftar semua lomba yang Anda ikuti beserta status pendaftarannya.</p>
+    </div>
+
+    <!-- Status Filter Tabs -->
+    <div class="ls-filter-tabs">
+      <button class="ls-tab active" onclick="filterLombaSaya('', this)">Semua</button>
+      <button class="ls-tab" onclick="filterLombaSaya('terverifikasi', this)">Terverifikasi</button>
+      <button class="ls-tab" onclick="filterLombaSaya('pending', this)">Pending</button>
+      <button class="ls-tab" onclick="filterLombaSaya('ditolak', this)">Ditolak</button>
+    </div>
+
+    <!-- Lomba List -->
+    <div class="ls-list" id="lombaSayaList">
+      <div class="ls-empty">Memuat data...</div>
+    </div>
+  </div>
+
+  <!-- FAB -->
+  <button class="fab" title="Daftar Lomba Baru" onclick="window.location.href='registrasi.html'">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+  </button>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
