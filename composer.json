@@ -1,0 +1,9 @@
+{
+    "name": "smartlomba/app",
+    "description": "SmartLomba - Sistem Pengelolaan Lomba Sekolah",
+    "require": {
+        "php": ">=8.1",
+        "ext-pdo": "*",
+        "ext-pdo_pgsql": "*"
+    }
+}
