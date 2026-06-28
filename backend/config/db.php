@@ -10,6 +10,18 @@ function getDB(): PDO {
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             PDO::ATTR_EMULATE_PREPARES => false,
         ]);
+        migrateIfNeeded($pdo);
     }
     return $pdo;
+}
+
+function migrateIfNeeded(PDO $pdo): void {
+    $result = $pdo->query("SELECT to_regclass('public.users')")->fetchColumn();
+    if ($result) return;
+
+    $schema = file_get_contents(__DIR__ . '/../sql/schema.sql');
+    $pdo->exec($schema);
+
+    $seed = file_get_contents(__DIR__ . '/../sql/seed.sql');
+    $pdo->exec($seed);
 }
